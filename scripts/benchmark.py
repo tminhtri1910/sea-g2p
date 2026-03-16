@@ -1,6 +1,7 @@
 import time
 from sea_g2p import Normalizer, G2P
 import random
+from tqdm import tqdm
 
 def benchmark():
     normalizer = Normalizer(lang="vi")
@@ -23,7 +24,7 @@ def benchmark():
     
     # Benchmark Normalization
     start_time = time.time()
-    normalized_texts = [normalizer.normalize(t) for t in test_sentences]
+    normalized_texts = [normalizer.normalize(t) for t in tqdm(test_sentences)]
     norm_time = time.time() - start_time
     print(f"Normalization time: {norm_time:.4f}s ({len(test_sentences)/norm_time:.2f} sentences/sec)")
     
